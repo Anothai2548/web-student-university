@@ -90,7 +90,7 @@ export default class TutorialsList extends Component {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Search by title"
+                placeholder="ค้นหาด้วยชื่อ "
                 value={searchTitle}
                 onChange={this.onChangeSearchTitle}
               />
@@ -99,7 +99,7 @@ export default class TutorialsList extends Component {
                 className='btn btn-outline-secondary'
                 type='button'
                 onClick={this.searchTitle}
-              >Search</button>
+              >ค้นหา</button>
             </div>
           </div>
         </div>
@@ -126,33 +126,40 @@ export default class TutorialsList extends Component {
         <div className='col-md-6'>
               {currentTutorial ? (
               <div>
-                <h4>Tutorial Detail</h4>
+                <h4>รายละเอียดข้อมูล</h4>
                 <div>
                   <label>
-                    <strong>Title :</strong>
+                    <strong>ชื่อ :</strong>
                   </label>
                   {" "}
-                  {currentTutorial.title}
+                  {currentTutorial.stu_name}
                 </div>
                 <div>
                   <label>
-                    <strong>Description :</strong>
+                    <strong>นามสกุล :</strong>
                   </label>
                   {" "}
-                  {currentTutorial.description}
+                  {currentTutorial.stu_suname}
                 </div>
                 <div>
                   <label>
-                    <strong>Stutus :</strong>
+                    <strong>มหาวิทยาลัย :</strong>
                   </label>
                   {" "}
-                  {currentTutorial.published ? "Published" : "Pending"}
+                  {currentTutorial.un_name}
+                </div>
+                <div>
+                  <label>
+                    <strong>สถานภาพการศึกษา :</strong>
+                  </label>
+                  {" "}
+                  {currentTutorial.stu_status ? "กำลังศึกษา" : "จบการศึกษา"}
                 </div>
               </div>
               ) : (
               <div>
                 <br />
-                <p>Please click on a Tutorial ...</p>
+                <p>คลิกเพื่อดูรายละเอียด</p>
               </div>
               )}
         </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
 
 import AddTutorial from './components/add-tutorial';
 import Tutorial from './components/tutorial';
@@ -18,7 +17,7 @@ class App extends Component {
           <div className='navbar-nav mr-auto'>
             <li className='nav-item'>
               <Link to="/tutorials" className='nav-link'>
-                บทเรียน
+                รายชื่อ
               </Link>
             </li>
             <li className='nav-item'>
