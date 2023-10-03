@@ -1,8 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
     const Student = sequelize.define("students", {
-        stu_id: {
-            type: Sequelize.STRING
-        },
         stu_name: {
             type: Sequelize.STRING
         },

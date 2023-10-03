@@ -45,8 +45,8 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const stu_id = req.params.stu_id;
-    Student.findByid(stu_id)
+    const id = req.params.id;
+    Student.findByPk(id)
         .then(data => {
             if(data){
                 res.send(data);
@@ -75,9 +75,10 @@ exports.findAllStatus = (req, res) => {
             });
         });
 };
+
 exports.update = (req, res) => {
-    const stu_id = req.params.stu_id;
-    Student.update(req.body, {where: {stu_id:stu_id}})
+    const id = req.params.id;
+    Student.update(req.body, {where: {id:id}})
         .then(num => {
             if(num == 1){
                 res.send({
@@ -97,8 +98,8 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    const stu_id = req.params.stu_id;
-    Student.destroy({ where: {stu_id:stu_id}})
+    const id = req.params.id;
+    Student.destroy({ where: {id:id}})
     .then(num => {
         if(num == 1){
             res.send({

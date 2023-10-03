@@ -4,10 +4,10 @@ module.exports = (app) => {
 
     router.post("/", student.create);
     router.get("/", student.findAll);
-    router.get("/status", student.findAllStatus);
-    router.get("/:stu_id", student.findOne);
-    router.put("/:stu_id", student.update);
-    router.delete("/:stu_id", student.delete);
+    router.get("/:stu_status", student.findAllStatus);
+    router.get("/:id", student.findOne);
+    router.put("/:id", student.update);
+    router.delete("/:id", student.delete);
     router.delete("/", student.deleteAll);
 
     app.use('/api/students', router);
