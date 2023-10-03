@@ -5,45 +5,55 @@ export default class AddTutorial extends Component {
   constructor(props){  //ทำทันที
     super(props);  // ส่งให้คลาสแม่
 
-    this.onChangeTitle = this.onChangeTitle.bind(this);
-    this.onChangeDescription = this.onChangeDescription.bind(this);
+    this.onChangeStuName = this.onChangeStuName.bind(this);
+    this.onChangeStuSuname = this.onChangeStuSuname.bind(this);
+    this.onChangeUnName = this.onChangeUnName.bind(this);
     this.saveTutorial = this.saveTutorial.bind(this);
     this.newTutorial = this.newTutorial.bind(this);
 
     this.state = {
       id: null,
-      title: "",
-      description: "",
-      published: false,
+      stu_name: "",
+      stu_suname: "",
+      un_name: "",
+      stu_status: false,
       submitted: false
     }
   }
 
-  onChangeTitle(e) {
+  onChangeStuName(e) {
     this.setState({
-      title: e.target.value
+      stu_name: e.target.value
     });
   }
 
-  onChangeDescription(e) {
+  onChangeStuSuname(e) {
     this.setState({
-      description: e.target.value
+      stu_suname: e.target.value
+    });
+  }
+
+  onChangeUnName(e) {
+    this.setState({
+      un_name: e.target.value
     });
   }
 
   saveTutorial() {
     var data = {
-      title: this.state.title,
-      description: this.state.description
+      stu_name: this.state.stu_name,
+      stu_suname: this.state.stu_suname,
+      un_name: this.state.un_name
     };
 
     TutorialDataService.create(data)
       .then( response => {
         this.setState({
           id: response.data.id,
-          title: response.data.title,
-          description: response.data.description,
-          published: response.data.published,
+          stu_name: response.data.stu_name,
+          stu_name: response.data.stu_suname,
+          un_name: response.data.un_name,
+          stu_status: response.data.stu_status,
 
           submitted: true
         });
@@ -57,9 +67,10 @@ export default class AddTutorial extends Component {
   newTutorial(){
     this.setState({
       id: null,
-      title: "",
-      description: "",
-      published: false,
+      stu_name: "",
+      stu_suname: "",
+      un_name: "",
+      stu_status: false,
 
       submitted: false
     });
@@ -76,21 +87,30 @@ export default class AddTutorial extends Component {
         ) : (
           <>
             <div className='form-group'>
-              <label htmlFor='title'>Title:</label>
+              <label htmlFor='stu_name'>ชื่อ:</label>
               <input type='text' 
                 className='form-control' 
-                id='title' value={this.state.title}
-                onChange={this.onChangeTitle}
-                name='title'
+                id='stu_name' value={this.state.stu_name}
+                onChange={this.onChangeStuName}
+                name='stu_name'
                 required />
             </div>
             <div className='form-group'>
-              <label htmlFor='description'>Description</label>
+              <label htmlFor='stu_suname'>นามสกุล</label>
               <input type='text' 
                 className='form-control' 
-                id='description' value={this.state.description}
-                onChange={this.onChangeDescription}
-                name='description'
+                id='stu_suname' value={this.state.stu_suname}
+                onChange={this.onChangeStuSuname}
+                name='stu_suname'
+                required />
+            </div>
+            <div className='form-group'>
+              <label htmlFor='un_name'>มหาวิทยาลัย</label>
+              <input type='text' 
+                className='form-control' 
+                id='un_name' value={this.state.un_name}
+                onChange={this.onChangeUnName}
+                name='un_name'
                 required />
             </div>
 
