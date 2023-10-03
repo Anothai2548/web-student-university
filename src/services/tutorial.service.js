@@ -26,7 +26,7 @@ class TutorialDataService {
     }
 
     findByTitle(title) {
-        return http.get('/students?title = ' + title)
+        return http.get('/students?stu_name = ' + title)
     }
 }
 

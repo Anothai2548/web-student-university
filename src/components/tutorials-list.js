@@ -111,7 +111,7 @@ export default class TutorialsList extends Component {
               <li className={"list-group-item " + (index === currentIndex ? "active" : "")} 
               onClick={() => this.setActiveTutorial(tutorial, index)}
               key={index}>
-                {tutorial.title}
+                {tutorial.stu_name}
               </li>
             ))}
           </ul>
