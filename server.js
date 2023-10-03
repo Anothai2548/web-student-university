@@ -22,13 +22,11 @@ db.sequelize.sync()
         console.log("Failed to sync DB");
     });
 
-// http://localhost:8080
 app.get("/", (req, res)=>{
     res.json({message: "Welcome to default route"});
 });
 
-// http://localhost:8080/api/tutorials
-require("./app/routes/tutorial.routes.js")(app);
+require("./app/routes/student.routes.js")(app);
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on PORT ${PORT}`);

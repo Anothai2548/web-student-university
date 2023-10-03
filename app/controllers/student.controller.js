@@ -1,22 +1,23 @@
 const db = require("../model");
-const Tutorial = db.tutorials;
+const Student = db.student;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if(!req.body.title){
+    if(!req.body.stu_name){
         res.status(400).send({
             message: "Content cannot be empty!"
         })
         return;
     }
 
-    const tutorial = {
-        title: req.body.title,
-        description: req.body.description,
-        published: req.body.published ? req.body.published : false
+    const student = {
+        stu_name: req.body.stu_name,
+        stu_suname: req.body.stu_suname,
+        un_name: req.body.un_name,
+        stu_status: req.body.stu_status ? req.body.stu_status : false
     }
 
-    Tutorial.create(tutorial)
+    Student.create(student)
         .then(data => {
             res.send(data);
         })
@@ -28,10 +29,10 @@ exports.create = (req, res) => {
 };
 
 exports.findAll = (req, res) => {
-    const title = req.body.title;
-    var condition = title ? {title: {[Op.like]: `%${title}%`}} : null;
+    const stu_name = req.body.stu_name;
+    var condition = stu_name ? {stu_name: {[Op.like]: `%${stu_name}%`}} : null;
 
-    Tutorial.findAll()
+    Student.findAll()
         .then(data => {
             res.send(data);
         })
@@ -44,8 +45,8 @@ exports.findAll = (req, res) => {
 };
 
 exports.findOne = (req, res) => {
-    const id = req.params.id;
-    Tutorial.findByPk(id)
+    const stu_id = req.params.stu_id;
+    Student.findByid(stu_id)
         .then(data => {
             if(data){
                 res.send(data);
@@ -63,8 +64,8 @@ exports.findOne = (req, res) => {
         });
 };
 
-exports.findAllPublished = (req, res) => {
-    Tutorial.findAll({ where: { published: true }})
+exports.findAllStatus = (req, res) => {
+    Student.findAll({ where: { stu_status: true }})
         .then(data => {
             res.send(data);
         })
@@ -75,8 +76,8 @@ exports.findAllPublished = (req, res) => {
         });
 };
 exports.update = (req, res) => {
-    const id = req.params.id;
-    Tutorial.update(req.body, {where: {id:id}})
+    const stu_id = req.params.stu_id;
+    Student.update(req.body, {where: {stu_id:stu_id}})
         .then(num => {
             if(num == 1){
                 res.send({
@@ -96,8 +97,8 @@ exports.update = (req, res) => {
 };
 
 exports.delete = (req, res) => {
-    const id = req.params.id;
-    Tutorial.destroy({ where: {id:id}})
+    const stu_id = req.params.stu_id;
+    Student.destroy({ where: {stu_id:stu_id}})
     .then(num => {
         if(num == 1){
             res.send({
@@ -117,7 +118,7 @@ exports.delete = (req, res) => {
 };
 
 exports.deleteAll = (req, res) => {
-    Tutorial.destroy({
+    Student.destroy({
         where:{},
         truncate: false
     })
